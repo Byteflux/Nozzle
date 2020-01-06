@@ -1,0 +1,53 @@
+From 47a2fcd516bfffa215b6d693167ba01d8e6f2062 Mon Sep 17 00:00:00 2001
+From: Byteflux <byte@byteflux.net>
+Date: Tue, 8 Jan 2013 23:50:41 -0500
+Subject: [PATCH] This is Nozzle
+
+
+diff --git a/pom.xml b/pom.xml
+index 252ddd22..ba0500a1 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -1,20 +1,18 @@
+-
+ <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+     <modelVersion>4.0.0</modelVersion>
++
+     <parent>
+-        <groupId>com.destroystokyo.paper</groupId>
+-        <artifactId>paper-parent</artifactId>
++        <groupId>net.byteflux</groupId>
++        <artifactId>nozzle-parent</artifactId>
+         <version>dev-SNAPSHOT</version>
++        <relativePath>../pom.xml</relativePath>
+     </parent>
+ 
+-    <groupId>com.destroystokyo.paper</groupId>
+-    <artifactId>paper-api</artifactId>
++    <artifactId>nozzle-api</artifactId>
+     <version>1.15.1-R0.1-SNAPSHOT</version>
+-    <packaging>jar</packaging>
+ 
+-    <name>Paper-API</name>
+-    <url>https://github.com/PaperMC/Paper</url>
++    <name>Nozzle-API</name>
+     <description>An enhanced plugin API for Minecraft servers.</description>
+ 
+     <properties>
+diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+index 0486abd1..a4be7ffc 100644
+--- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
++++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
+@@ -51,7 +51,7 @@ public class VersionCommand extends BukkitCommand {
+ 
+         if (args.length == 0) {
+             sender.sendMessage("This server is running " + Bukkit.getName() + " version " + Bukkit.getVersion() + " (Implementing API version " + Bukkit.getBukkitVersion() + ")");
+-            sendVersion(sender);
++            //sendVersion(sender); // Nozzle - disable Paper's version checker for now
+         } else {
+             StringBuilder name = new StringBuilder();
+ 
+-- 
+2.24.1.windows.2
+

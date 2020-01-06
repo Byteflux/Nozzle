@@ -1,0 +1,20 @@
+# IntelliJ
+/.idea/
+*.iml
+
+# Eclipse
+/.settings/
+/.classpath
+/.project
+
+# NetBeans
+/nbproject/
+/nbactions.xml
+
+# VSCode
+/.vscode/
+
+# Project
+/Nozzle-API/
+/Nozzle-Server/
+/work/
