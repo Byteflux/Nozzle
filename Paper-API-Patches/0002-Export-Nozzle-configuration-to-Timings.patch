@@ -1,0 +1,42 @@
+From 2b2ea9646e5c8f3582a0b37c111ae6e29515e101 Mon Sep 17 00:00:00 2001
+From: Byteflux <byte@byteflux.net>
+Date: Mon, 6 Jan 2020 17:59:10 -0800
+Subject: [PATCH] Export Nozzle configuration to Timings
+
+
+diff --git a/src/main/java/co/aikar/timings/TimingsExport.java b/src/main/java/co/aikar/timings/TimingsExport.java
+index 23eb8c65..4241f30c 100644
+--- a/src/main/java/co/aikar/timings/TimingsExport.java
++++ b/src/main/java/co/aikar/timings/TimingsExport.java
+@@ -206,7 +206,8 @@ class TimingsExport extends Thread {
+         parent.put("config", createObject(
+             pair("spigot", mapAsJSON(Bukkit.spigot().getSpigotConfig(), null)),
+             pair("bukkit", mapAsJSON(Bukkit.spigot().getBukkitConfig(), null)),
+-            pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null))
++            pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null)),
++            pair("nozzle", mapAsJSON(Bukkit.spigot().getNozzleConfig(), null)) // Nozzle
+         ));
+ 
+         new TimingsExport(listeners, parent, history).start();
+diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
+index 31470479..1556c916 100644
+--- a/src/main/java/org/bukkit/Server.java
++++ b/src/main/java/org/bukkit/Server.java
+@@ -1321,6 +1321,14 @@ public interface Server extends PluginMessageRecipient {
+         }
+         // Paper end
+ 
++        // Nozzle start
++        @NotNull
++        public org.bukkit.configuration.file.YamlConfiguration getNozzleConfig()
++        {
++            throw new UnsupportedOperationException("Not supported yet.");
++        }
++        // Nozzle end
++
+         /**
+          * Sends the component to the player
+          *
+-- 
+2.24.1.windows.2
+
