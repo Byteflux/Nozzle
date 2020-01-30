@@ -1,11 +1,11 @@
-From 47a2fcd516bfffa215b6d693167ba01d8e6f2062 Mon Sep 17 00:00:00 2001
+From 5d584e7cefe2b6797f9bbb70cf8a2723cfde269e Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Tue, 8 Jan 2013 23:50:41 -0500
 Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index 252ddd22..ba0500a1 100644
+index a71015f4..90299060 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,20 +1,18 @@
@@ -26,7 +26,7 @@ index 252ddd22..ba0500a1 100644
 -    <groupId>com.destroystokyo.paper</groupId>
 -    <artifactId>paper-api</artifactId>
 +    <artifactId>nozzle-api</artifactId>
-     <version>1.15.1-R0.1-SNAPSHOT</version>
+     <version>1.15.2-R0.1-SNAPSHOT</version>
 -    <packaging>jar</packaging>
  
 -    <name>Paper-API</name>

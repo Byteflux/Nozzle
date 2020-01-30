@@ -1,4 +1,4 @@
-From a6ec5f2f8d468626947b6698931f0f2b8ce6e975 Mon Sep 17 00:00:00 2001
+From 0544e379fb6ab0ba70609fde8df9bdbbc204bfbd Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Mon, 6 Jan 2020 18:30:40 -0800
 Subject: [PATCH] Add configuration file
@@ -232,10 +232,10 @@ index 000000000..5fc76c65d
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/DedicatedServer.java b/src/main/java/net/minecraft/server/DedicatedServer.java
-index 3ed74ae0e..914a2d8cd 100644
+index 349a0ea21..5bab81f93 100644
 --- a/src/main/java/net/minecraft/server/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/DedicatedServer.java
-@@ -186,6 +186,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
+@@ -194,6 +194,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
          com.destroystokyo.paper.PaperConfig.registerCommands();
          com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // load version history now
          // Paper end
@@ -252,10 +252,10 @@ index 3ed74ae0e..914a2d8cd 100644
          this.setSpawnAnimals(dedicatedserverproperties.spawnAnimals);
          this.setSpawnNPCs(dedicatedserverproperties.spawnNpcs);
 diff --git a/src/main/java/net/minecraft/server/World.java b/src/main/java/net/minecraft/server/World.java
-index 5460ace8f..24c316423 100644
+index 913511388..87f7bc3d5 100644
 --- a/src/main/java/net/minecraft/server/World.java
 +++ b/src/main/java/net/minecraft/server/World.java
-@@ -94,6 +94,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+@@ -78,6 +78,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
      public final org.spigotmc.SpigotWorldConfig spigotConfig; // Spigot
  
      public final com.destroystokyo.paper.PaperWorldConfig paperConfig; // Paper
@@ -263,7 +263,7 @@ index 5460ace8f..24c316423 100644
      public final ChunkPacketBlockController chunkPacketBlockController; // Paper - Anti-Xray
  
      public final co.aikar.timings.WorldTimingsHandler timings; // Paper
-@@ -144,6 +145,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+@@ -128,6 +129,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
      protected World(WorldData worlddata, DimensionManager dimensionmanager, BiFunction<World, WorldProvider, IChunkProvider> bifunction, GameProfilerFiller gameprofilerfiller, boolean flag, org.bukkit.generator.ChunkGenerator gen, org.bukkit.World.Environment env) {
          this.spigotConfig = new org.spigotmc.SpigotWorldConfig( worlddata.getName() ); // Spigot
          this.paperConfig = new com.destroystokyo.paper.PaperWorldConfig(worlddata.getName(), this.spigotConfig); // Paper
@@ -315,10 +315,10 @@ index f652441fc..e3a3950fc 100644
          public void restart() {
              org.spigotmc.RestartCommand.restart();
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 75d3cbc44..3cf9c54a9 100644
+index eb5f44e30..454a32856 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
-@@ -137,6 +137,14 @@ public class Main {
+@@ -138,6 +138,14 @@ public class Main {
                          .describedAs("Yml file");
                  // Paper end
  

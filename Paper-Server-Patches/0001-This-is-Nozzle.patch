@@ -1,11 +1,11 @@
-From 7716ed9e57b5df2031ed3ea7162e0fb0df0ddf6f Mon Sep 17 00:00:00 2001
+From b6cc3b6b1d2542a69de111aa8c5e6411c6e17f54 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Wed, 31 Oct 2012 23:26:58 -0400
 Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index 495e11f0f..19c325571 100644
+index 907807ee5..30ae82aee 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,11 +1,18 @@
@@ -23,7 +23,7 @@ index 495e11f0f..19c325571 100644
 +    </parent>
 +
 +    <artifactId>nozzle</artifactId>
-     <version>1.15.1-R0.1-SNAPSHOT</version>
+     <version>1.15.2-R0.1-SNAPSHOT</version>
 -    <name>Paper</name>
 -    <url>https://papermc.io</url>
 +
@@ -82,10 +82,10 @@ index cd6e25923..914998a87 100644
          );
      }
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 0365cebcf..c1bbb7106 100644
+index 346664cee..1d7a09747 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1474,7 +1474,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
+@@ -1484,7 +1484,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
      }
  
      public String getServerModName() {
