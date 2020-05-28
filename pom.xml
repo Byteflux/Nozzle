@@ -11,6 +11,13 @@
 
     <name>Nozzle (Parent)</name>
 
+    <repositories>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+    </repositories>
+
     <build>
         <defaultGoal>install</defaultGoal>
         <finalName>${project.artifactId}</finalName>
@@ -19,5 +26,6 @@
     <modules>
         <module>Nozzle-API</module>
         <module>Nozzle-Server</module>
+        <module>work/Paper/Paper-MojangAPI</module>
     </modules>
 </project>

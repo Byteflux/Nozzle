@@ -1,11 +1,11 @@
-From 5d584e7cefe2b6797f9bbb70cf8a2723cfde269e Mon Sep 17 00:00:00 2001
+From 8ac42d58b85074bdacb0afdbe3b249843b805f07 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Tue, 8 Jan 2013 23:50:41 -0500
 Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index a71015f4..90299060 100644
+index 20c473f5..f43972fe 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,20 +1,18 @@

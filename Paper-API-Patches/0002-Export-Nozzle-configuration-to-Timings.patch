@@ -1,11 +1,11 @@
-From 0a7f5adbc53cfdf0646cf2aa6968530b84e9dee7 Mon Sep 17 00:00:00 2001
+From 91016d688218a07db5a6abcba88c3b07b2d4fa1b Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Mon, 6 Jan 2020 17:59:10 -0800
 Subject: [PATCH] Export Nozzle configuration to Timings
 
 
 diff --git a/src/main/java/co/aikar/timings/TimingsExport.java b/src/main/java/co/aikar/timings/TimingsExport.java
-index 23eb8c65..4241f30c 100644
+index 93d5a3f9..f4a7b278 100644
 --- a/src/main/java/co/aikar/timings/TimingsExport.java
 +++ b/src/main/java/co/aikar/timings/TimingsExport.java
 @@ -206,7 +206,8 @@ class TimingsExport extends Thread {
@@ -19,10 +19,10 @@ index 23eb8c65..4241f30c 100644
  
          new TimingsExport(listeners, parent, history).start();
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
-index a1371730..8280d6a0 100644
+index cc06492f..a599174e 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
-@@ -1319,6 +1319,14 @@ public interface Server extends PluginMessageRecipient {
+@@ -1396,6 +1396,14 @@ public interface Server extends PluginMessageRecipient {
          }
          // Paper end
  

@@ -1,14 +1,14 @@
-From 0544e379fb6ab0ba70609fde8df9bdbbc204bfbd Mon Sep 17 00:00:00 2001
+From a15dad64afa90d71d4ad10b5865af01a342bbf8a Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Mon, 6 Jan 2020 18:30:40 -0800
 Subject: [PATCH] Add configuration file
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-index 1d7d1ffbf..2545efa2b 100644
+index f0284e81d..31eb01fb6 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-@@ -146,7 +146,7 @@ public class PaperConfig {
+@@ -147,7 +147,7 @@ public class PaperConfig {
          return (int) num;
      }
  
@@ -232,7 +232,7 @@ index 000000000..5fc76c65d
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/DedicatedServer.java b/src/main/java/net/minecraft/server/DedicatedServer.java
-index 349a0ea21..5bab81f93 100644
+index b07c49f1b..179090942 100644
 --- a/src/main/java/net/minecraft/server/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/DedicatedServer.java
 @@ -194,6 +194,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
@@ -252,10 +252,10 @@ index 349a0ea21..5bab81f93 100644
          this.setSpawnAnimals(dedicatedserverproperties.spawnAnimals);
          this.setSpawnNPCs(dedicatedserverproperties.spawnNpcs);
 diff --git a/src/main/java/net/minecraft/server/World.java b/src/main/java/net/minecraft/server/World.java
-index 913511388..87f7bc3d5 100644
+index 561b42472..9e0f7dc30 100644
 --- a/src/main/java/net/minecraft/server/World.java
 +++ b/src/main/java/net/minecraft/server/World.java
-@@ -78,6 +78,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+@@ -86,6 +86,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
      public final org.spigotmc.SpigotWorldConfig spigotConfig; // Spigot
  
      public final com.destroystokyo.paper.PaperWorldConfig paperConfig; // Paper
@@ -263,19 +263,19 @@ index 913511388..87f7bc3d5 100644
      public final ChunkPacketBlockController chunkPacketBlockController; // Paper - Anti-Xray
  
      public final co.aikar.timings.WorldTimingsHandler timings; // Paper
-@@ -128,6 +129,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+@@ -136,6 +137,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
      protected World(WorldData worlddata, DimensionManager dimensionmanager, BiFunction<World, WorldProvider, IChunkProvider> bifunction, GameProfilerFiller gameprofilerfiller, boolean flag, org.bukkit.generator.ChunkGenerator gen, org.bukkit.World.Environment env) {
          this.spigotConfig = new org.spigotmc.SpigotWorldConfig( worlddata.getName() ); // Spigot
          this.paperConfig = new com.destroystokyo.paper.PaperWorldConfig(worlddata.getName(), this.spigotConfig); // Paper
 +        this.nozzleConfig = new net.byteflux.nozzle.NozzleWorldConfig(worlddata.getName(), spigotConfig, paperConfig); // Nozzle
          this.chunkPacketBlockController = this.paperConfig.antiXray ? new ChunkPacketBlockControllerAntiXray(this.paperConfig) : ChunkPacketBlockController.NO_OPERATION_INSTANCE; // Paper - Anti-Xray
          this.generator = gen;
-         this.world = new CraftWorld((WorldServer) this, gen, env);
+         dimensionmanager.world = (WorldServer) this; // Paper
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index f652441fc..e3a3950fc 100644
+index 1a54d258d..665e00ad1 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -794,6 +794,7 @@ public final class CraftServer implements Server {
+@@ -815,6 +815,7 @@ public final class CraftServer implements Server {
  
          org.spigotmc.SpigotConfig.init((File) console.options.valueOf("spigot-settings")); // Spigot
          com.destroystokyo.paper.PaperConfig.init((File) console.options.valueOf("paper-settings")); // Paper
@@ -283,7 +283,7 @@ index f652441fc..e3a3950fc 100644
          for (WorldServer world : console.getWorlds()) {
              world.worldData.setDifficulty(config.difficulty);
              world.setSpawnFlags(config.spawnMonsters, config.spawnAnimals);
-@@ -810,6 +811,7 @@ public final class CraftServer implements Server {
+@@ -843,6 +844,7 @@ public final class CraftServer implements Server {
              }
              world.spigotConfig.init(); // Spigot
              world.paperConfig.init(); // Paper
@@ -291,7 +291,7 @@ index f652441fc..e3a3950fc 100644
          }
  
          Plugin[] pluginClone = pluginManager.getPlugins().clone(); // Paper
-@@ -828,6 +830,7 @@ public final class CraftServer implements Server {
+@@ -861,6 +863,7 @@ public final class CraftServer implements Server {
          reloadData();
          org.spigotmc.SpigotConfig.registerCommands(); // Spigot
          com.destroystokyo.paper.PaperConfig.registerCommands(); // Paper
@@ -299,7 +299,7 @@ index f652441fc..e3a3950fc 100644
          overrideAllCommandBlockCommands = commandsConfiguration.getStringList("command-block-overrides").contains("*");
          ignoreVanillaPermissions = commandsConfiguration.getBoolean("ignore-vanilla-permissions");
  
-@@ -2044,6 +2047,14 @@ public final class CraftServer implements Server {
+@@ -2134,6 +2137,14 @@ public final class CraftServer implements Server {
              return com.destroystokyo.paper.PaperConfig.config;
          }
  
@@ -315,10 +315,10 @@ index f652441fc..e3a3950fc 100644
          public void restart() {
              org.spigotmc.RestartCommand.restart();
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index eb5f44e30..454a32856 100644
+index d6e5d014c..68a2b90b2 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
-@@ -138,6 +138,14 @@ public class Main {
+@@ -139,6 +139,14 @@ public class Main {
                          .describedAs("Yml file");
                  // Paper end
  
