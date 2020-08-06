@@ -33,7 +33,14 @@ case "$1" in
     (
         set -e
         cd "$basedir"
-        scripts/rebuildPatches.sh "$basedir" || exit 1
+        scripts/rebuildPatches.sh "$basedir" $2 || exit 1
+    ) || failed=1
+    ;;
+    "rbf" | "rbfull")
+    (
+        set -e
+        cd "$basedir"
+        scripts/rebuildPatches.sh "$basedir" "nofilter" || exit 1
     ) || failed=1
     ;;
     "p" | "patch")
@@ -48,6 +55,17 @@ case "$1" in
         set -e
         cd "$basedir"
         scripts/build.sh "$basedir" "--jar" || exit 1
+    ) || failed=1
+    ;;
+    "b" | "build")
+    (
+        set -e
+        cd "$basedir"
+        scripts/build.sh "$basedir" || exit 1
+        (cd Nozzle-API ; mvn clean install) || exit 1
+        (cd Nozzle-Server ; mvn clean package) || exit 1
+        echo "Nozzle jar successfully built"
+        ls -la Nozzle-Server/target/nozzle*.jar
     ) || failed=1
     ;;
     "make")
@@ -103,6 +121,13 @@ case "$1" in
         rm -rf Nozzle-Server
         rm -rf work
         echo "Cleaned build files"
+    ;;
+    "con" | "continue")
+        if [ -d ".git/rebase-apply" ]; then
+            git -c commit.gpgsign=false am --continue
+        elif [ -d ".git/rebase-merge" ]; then
+            git -c commit.gpgsign=false rebase --continue
+        fi
     ;;
     "e" | "edit")
         case "$2" in

@@ -38,6 +38,7 @@ function applyPatch {
 
     statusfile=".git/patch-apply-failed"
     rm -f "$statusfile"
+    git config commit.gpgsign false
     $gitcmd am --abort >/dev/null 2>&1
 
     # Special case Windows handling because of ARG_MAX constraint
@@ -76,10 +77,10 @@ echo "Importing MC Dev"
 ./scripts/importmcdev.sh "$basedir" || exit 1
 
 # Apply Nozzle
-cd "$basedir"
 (
     applyPatch "work/Paper/Paper-API" Nozzle-API HEAD &&
     applyPatch "work/Paper/Paper-Server" Nozzle-Server HEAD
+    cd "$basedir"
 
     # if we have previously ran ./nozzle mcdev, update it
     if [ -d "$workdir/mc-dev/src" ]; then
