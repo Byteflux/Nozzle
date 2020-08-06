@@ -1,0 +1,23 @@
+From 2dfcd8f3be6c8f72021ed33541f5ca017b5e6cd1 Mon Sep 17 00:00:00 2001
+From: Byteflux <byte@byteflux.net>
+Date: Wed, 5 Aug 2020 17:24:00 -0700
+Subject: [PATCH] Export config to timings
+
+
+diff --git a/src/main/java/co/aikar/timings/TimingsExport.java b/src/main/java/co/aikar/timings/TimingsExport.java
+index a3b41ce5f..b570828bc 100644
+--- a/src/main/java/co/aikar/timings/TimingsExport.java
++++ b/src/main/java/co/aikar/timings/TimingsExport.java
+@@ -229,7 +229,8 @@ public class TimingsExport extends Thread {
+         parent.put("config", createObject(
+             pair("spigot", mapAsJSON(Bukkit.spigot().getSpigotConfig(), null)),
+             pair("bukkit", mapAsJSON(Bukkit.spigot().getBukkitConfig(), null)),
+-            pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null))
++            pair("paper", mapAsJSON(Bukkit.spigot().getPaperConfig(), null)),
++            pair("nozzle", mapAsJSON(Bukkit.spigot().getNozzleConfig(), null)) // Nozzle
+         ));
+ 
+         new TimingsExport(listeners, parent, history).start();
+-- 
+2.27.0.windows.1
+

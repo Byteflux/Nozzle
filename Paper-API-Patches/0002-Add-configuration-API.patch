@@ -1,0 +1,28 @@
+From 4e96dbc05989dfab5865fb5e0b4ca3667917cabb Mon Sep 17 00:00:00 2001
+From: Byteflux <byte@byteflux.net>
+Date: Mon, 6 Jan 2020 17:59:10 -0800
+Subject: [PATCH] Add configuration API
+
+
+diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
+index cc06492f..a599174e 100644
+--- a/src/main/java/org/bukkit/Server.java
++++ b/src/main/java/org/bukkit/Server.java
+@@ -1396,6 +1396,14 @@ public interface Server extends PluginMessageRecipient {
+         }
+         // Paper end
+ 
++        // Nozzle start
++        @NotNull
++        public org.bukkit.configuration.file.YamlConfiguration getNozzleConfig()
++        {
++            throw new UnsupportedOperationException("Not supported yet.");
++        }
++        // Nozzle end
++
+         /**
+          * Sends the component to the player
+          *
+-- 
+2.27.0.windows.1
+

@@ -1,4 +1,4 @@
-From 632686a8f2d0683cb99d03d3ecd48e92da73cc03 Mon Sep 17 00:00:00 2001
+From aee60587a7a6947095fc3d24c73b30182525db8b Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Wed, 31 Oct 2012 23:26:58 -0400
 Subject: [PATCH] This is Nozzle
@@ -69,7 +69,7 @@ index e4c63bb76..230e4430b 100644
                  </configuration>
                  <executions>
 diff --git a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
-index cd6e25923..914998a87 100644
+index 74ed02fa9..a00232419 100644
 --- a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 +++ b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 @@ -17,7 +17,7 @@ public final class PaperConsole extends SimpleTerminalConsole {
@@ -78,14 +78,14 @@ index cd6e25923..914998a87 100644
          return super.buildReader(builder
 -                .appName("Paper")
 +                .appName("Nozzle") // Nozzle
+                 .variable(LineReader.HISTORY_FILE, java.nio.file.Paths.get(".console_history"))
                  .completer(new ConsoleCommandCompleter(this.server))
          );
-     }
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 5b24de6d6..bf4b38ec8 100644
+index 5c71efe49..22b17d336 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1559,7 +1559,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
+@@ -1571,7 +1571,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
      }
  
      public String getServerModName() {
@@ -95,7 +95,7 @@ index 5b24de6d6..bf4b38ec8 100644
  
      public CrashReport b(CrashReport crashreport) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 894917c88..1a54d258d 100644
+index 568aefdf6..4bd55aa75 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -205,7 +205,7 @@ import javax.annotation.Nullable; // Paper
@@ -121,5 +121,5 @@ index 674096cab..07d65e5bc 100644
  
          if (stream != null) {
 -- 
-2.24.1.windows.2
+2.27.0.windows.1
 
