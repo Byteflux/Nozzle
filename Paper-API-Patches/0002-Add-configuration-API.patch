@@ -1,14 +1,14 @@
-From 4e96dbc05989dfab5865fb5e0b4ca3667917cabb Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Mon, 6 Jan 2020 17:59:10 -0800
 Subject: [PATCH] Add configuration API
 
 
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
-index cc06492f..a599174e 100644
+index 6e01bf2d52e8bb6de7395f50c12f16c64aef72ae..68c0113402304e5158651a65f48aa433b482d0fd 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
-@@ -1396,6 +1396,14 @@ public interface Server extends PluginMessageRecipient {
+@@ -1447,6 +1447,14 @@ public interface Server extends PluginMessageRecipient {
          }
          // Paper end
  
@@ -23,6 +23,3 @@ index cc06492f..a599174e 100644
          /**
           * Sends the component to the player
           *
--- 
-2.27.0.windows.1
-

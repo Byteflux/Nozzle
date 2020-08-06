@@ -1,11 +1,11 @@
-From 8ac42d58b85074bdacb0afdbe3b249843b805f07 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Tue, 8 Jan 2013 23:50:41 -0500
 Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index 20c473f5..f43972fe 100644
+index cb37aea9d7f60b54b95b5cf1798d5a6c5c0e7c14..b4c39ae36b943154c323d36266e66f6358bca408 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,20 +1,18 @@
@@ -26,7 +26,7 @@ index 20c473f5..f43972fe 100644
 -    <groupId>com.destroystokyo.paper</groupId>
 -    <artifactId>paper-api</artifactId>
 +    <artifactId>nozzle-api</artifactId>
-     <version>1.15.2-R0.1-SNAPSHOT</version>
+     <version>1.16.1-R0.1-SNAPSHOT</version>
 -    <packaging>jar</packaging>
  
 -    <name>Paper-API</name>
@@ -36,7 +36,7 @@ index 20c473f5..f43972fe 100644
  
      <properties>
 diff --git a/src/main/java/org/bukkit/command/defaults/VersionCommand.java b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
-index 0486abd1..a4be7ffc 100644
+index a47ed6b290c051ff076900028b929745aac0ba55..9ed41fe73f16207307efa87e2f0fe34b27743504 100644
 --- a/src/main/java/org/bukkit/command/defaults/VersionCommand.java
 +++ b/src/main/java/org/bukkit/command/defaults/VersionCommand.java
 @@ -51,7 +51,7 @@ public class VersionCommand extends BukkitCommand {
@@ -48,6 +48,3 @@ index 0486abd1..a4be7ffc 100644
          } else {
              StringBuilder name = new StringBuilder();
  
--- 
-2.24.1.windows.2
-

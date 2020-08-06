@@ -1,11 +1,11 @@
-From aee60587a7a6947095fc3d24c73b30182525db8b Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Wed, 31 Oct 2012 23:26:58 -0400
 Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index e4c63bb76..230e4430b 100644
+index ef8ee637a8a0e5e703922b2991c58f4f116b23fb..fb080eeb787252a306add59cfa9b51dd6e1ade4f 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,11 +1,18 @@
@@ -23,7 +23,7 @@ index e4c63bb76..230e4430b 100644
 +    </parent>
 +
 +    <artifactId>nozzle</artifactId>
-     <version>1.15.2-R0.1-SNAPSHOT</version>
+     <version>1.16.1-R0.1-SNAPSHOT</version>
 -    <name>Paper</name>
 -    <url>https://papermc.io</url>
 +
@@ -69,7 +69,7 @@ index e4c63bb76..230e4430b 100644
                  </configuration>
                  <executions>
 diff --git a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
-index 74ed02fa9..a00232419 100644
+index 74ed02fa9296583977bb721014b10ff8b708b43c..a00232419823d1511da050046053e4c3ea76a81c 100644
 --- a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 +++ b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 @@ -17,7 +17,7 @@ public final class PaperConsole extends SimpleTerminalConsole {
@@ -82,10 +82,10 @@ index 74ed02fa9..a00232419 100644
                  .completer(new ConsoleCommandCompleter(this.server))
          );
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 5c71efe49..22b17d336 100644
+index 3130c68e7318a41e763575b245ee1b5298c92a16..409b29f1e981ff735e3b4db32905593956c59cb0 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1571,7 +1571,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
+@@ -1447,7 +1447,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
      }
  
      public String getServerModName() {
@@ -95,10 +95,10 @@ index 5c71efe49..22b17d336 100644
  
      public CrashReport b(CrashReport crashreport) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 568aefdf6..4bd55aa75 100644
+index 6282a05ae855a6b55eec4980fbc1b356f65f500e..190966cfd103701dcce7f358c674ee8afce4f4b0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -205,7 +205,7 @@ import javax.annotation.Nullable; // Paper
+@@ -231,7 +231,7 @@ import javax.annotation.Nullable; // Paper
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {
@@ -108,7 +108,7 @@ index 568aefdf6..4bd55aa75 100644
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
-index 674096cab..07d65e5bc 100644
+index 674096cab190d62622f9947853b056f57d43a2a5..07d65e5bc14ebb8e0aeedfff48ef136b30e3528c 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/Versioning.java
 @@ -11,7 +11,7 @@ public final class Versioning {
@@ -120,6 +120,3 @@ index 674096cab..07d65e5bc 100644
          Properties properties = new Properties();
  
          if (stream != null) {
--- 
-2.27.0.windows.1
-

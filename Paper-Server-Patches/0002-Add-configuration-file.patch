@@ -1,14 +1,14 @@
-From 1194b409966e6d4814ae51c6593710e8ce878f15 Mon Sep 17 00:00:00 2001
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Byteflux <byte@byteflux.net>
 Date: Mon, 6 Jan 2020 18:30:40 -0800
 Subject: [PATCH] Add configuration file
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-index 5d4783e35..1128b9bc4 100644
+index 56e4359ba32339e1bef58061585ff3e12e4215f3..69fb3122c62199e8a941ff6537257a175dc5ae1c 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-@@ -147,7 +147,7 @@ public class PaperConfig {
+@@ -146,7 +146,7 @@ public class PaperConfig {
          return (int) num;
      }
  
@@ -19,7 +19,7 @@ index 5d4783e35..1128b9bc4 100644
          if (seconds > 60 * 60 * 24) {
 diff --git a/src/main/java/net/byteflux/nozzle/NozzleConfig.java b/src/main/java/net/byteflux/nozzle/NozzleConfig.java
 new file mode 100644
-index 000000000..a04772c0b
+index 0000000000000000000000000000000000000000..a04772c0bb81dd7fdf5c4b74c4aaaecdc97448f6
 --- /dev/null
 +++ b/src/main/java/net/byteflux/nozzle/NozzleConfig.java
 @@ -0,0 +1,135 @@
@@ -160,7 +160,7 @@ index 000000000..a04772c0b
 +}
 diff --git a/src/main/java/net/byteflux/nozzle/NozzleWorldConfig.java b/src/main/java/net/byteflux/nozzle/NozzleWorldConfig.java
 new file mode 100644
-index 000000000..5fc76c65d
+index 0000000000000000000000000000000000000000..5fc76c65d80374cb0145c4d487354a9cc855b7cf
 --- /dev/null
 +++ b/src/main/java/net/byteflux/nozzle/NozzleWorldConfig.java
 @@ -0,0 +1,67 @@
@@ -232,16 +232,16 @@ index 000000000..5fc76c65d
 +    }
 +}
 diff --git a/src/main/java/net/minecraft/server/DedicatedServer.java b/src/main/java/net/minecraft/server/DedicatedServer.java
-index 32cd645ab..3aad32af0 100644
+index 8b2755a3b95e472e884976195d1d3551fc260e39..df0c19922c9459dc9b71e4ca6e14e4c4aa8d21ef 100644
 --- a/src/main/java/net/minecraft/server/DedicatedServer.java
 +++ b/src/main/java/net/minecraft/server/DedicatedServer.java
-@@ -194,6 +194,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
+@@ -170,6 +170,15 @@ public class DedicatedServer extends MinecraftServer implements IMinecraftServer
          com.destroystokyo.paper.PaperConfig.registerCommands();
          com.destroystokyo.paper.VersionHistoryManager.INSTANCE.getClass(); // load version history now
          // Paper end
 +        // Nozzle start
 +        try {
-+            net.byteflux.nozzle.NozzleConfig.init((File) options.valueOf("nozzle-settings"));
++            net.byteflux.nozzle.NozzleConfig.init((java.io.File) options.valueOf("nozzle-settings"));
 +        } catch (Exception e) {
 +            DedicatedServer.LOGGER.error("Unable to load server configuration", e);
 +            return false;
@@ -249,13 +249,13 @@ index 32cd645ab..3aad32af0 100644
 +        net.byteflux.nozzle.NozzleConfig.registerCommands();
 +        // Nozzle end
  
-         this.setSpawnAnimals(dedicatedserverproperties.spawnAnimals);
-         this.setSpawnNPCs(dedicatedserverproperties.spawnNpcs);
+         this.setPVP(dedicatedserverproperties.pvp);
+         this.setAllowFlight(dedicatedserverproperties.allowFlight);
 diff --git a/src/main/java/net/minecraft/server/World.java b/src/main/java/net/minecraft/server/World.java
-index 6bca57672..26a730f07 100644
+index a173d2562e0c549184f5e82f112843a9893cb502..020c1f56ec2925aa3201bc1f0db2b6a048a0412b 100644
 --- a/src/main/java/net/minecraft/server/World.java
 +++ b/src/main/java/net/minecraft/server/World.java
-@@ -86,6 +86,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+@@ -92,6 +92,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
      public final org.spigotmc.SpigotWorldConfig spigotConfig; // Spigot
  
      public final com.destroystokyo.paper.PaperWorldConfig paperConfig; // Paper
@@ -263,27 +263,27 @@ index 6bca57672..26a730f07 100644
      public final ChunkPacketBlockController chunkPacketBlockController; // Paper - Anti-Xray
  
      public final co.aikar.timings.WorldTimingsHandler timings; // Paper
-@@ -136,6 +137,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
-     protected World(WorldData worlddata, DimensionManager dimensionmanager, java.util.concurrent.Executor executor, BiFunction<World, WorldProvider, IChunkProvider> bifunction, GameProfilerFiller gameprofilerfiller, boolean flag, org.bukkit.generator.ChunkGenerator gen, org.bukkit.World.Environment env) { // Paper - executor
-         this.spigotConfig = new org.spigotmc.SpigotWorldConfig( worlddata.getName() ); // Spigot
-         this.paperConfig = new com.destroystokyo.paper.PaperWorldConfig(worlddata.getName(), this.spigotConfig); // Paper
-+        this.nozzleConfig = new net.byteflux.nozzle.NozzleWorldConfig(worlddata.getName(), spigotConfig, paperConfig); // Nozzle
+@@ -120,6 +121,7 @@ public abstract class World implements GeneratorAccess, AutoCloseable {
+     protected World(WorldDataMutable worlddatamutable, ResourceKey<World> resourcekey, ResourceKey<DimensionManager> resourcekey1, DimensionManager dimensionmanager, Supplier<GameProfilerFiller> supplier, boolean flag, boolean flag1, long i, org.bukkit.generator.ChunkGenerator gen, org.bukkit.World.Environment env, java.util.concurrent.Executor executor) {
+         this.spigotConfig = new org.spigotmc.SpigotWorldConfig(((WorldDataServer) worlddatamutable).getName()); // Spigot
+         this.paperConfig = new com.destroystokyo.paper.PaperWorldConfig((((WorldDataServer)worlddatamutable).getName()), this.spigotConfig); // Paper
++        this.nozzleConfig = new net.byteflux.nozzle.NozzleWorldConfig(((WorldDataServer) worlddatamutable).getName(), spigotConfig, paperConfig); // Nozzle
          this.chunkPacketBlockController = this.paperConfig.antiXray ? new ChunkPacketBlockControllerAntiXray(this.paperConfig, executor) : ChunkPacketBlockController.NO_OPERATION_INSTANCE; // Paper - Anti-Xray
          this.generator = gen;
-         if (dimensionmanager.world == null) dimensionmanager.world = (WorldServer) this; // Paper
+         this.world = new CraftWorld((WorldServer) this, gen, env);
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 4bd55aa75..8f5f8c050 100644
+index 190966cfd103701dcce7f358c674ee8afce4f4b0..bb10742557393605be024e74644429418f61b146 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -815,6 +815,7 @@ public final class CraftServer implements Server {
+@@ -848,6 +848,7 @@ public final class CraftServer implements Server {
  
          org.spigotmc.SpigotConfig.init((File) console.options.valueOf("spigot-settings")); // Spigot
          com.destroystokyo.paper.PaperConfig.init((File) console.options.valueOf("paper-settings")); // Paper
 +        net.byteflux.nozzle.NozzleConfig.init((File) console.options.valueOf("nozzle-settings")); // Nozzle
          for (WorldServer world : console.getWorlds()) {
-             world.worldData.setDifficulty(config.difficulty);
+             world.worldDataServer.setDifficulty(config.difficulty);
              world.setSpawnFlags(config.spawnMonsters, config.spawnAnimals);
-@@ -843,6 +844,7 @@ public final class CraftServer implements Server {
+@@ -882,6 +883,7 @@ public final class CraftServer implements Server {
              }
              world.spigotConfig.init(); // Spigot
              world.paperConfig.init(); // Paper
@@ -291,7 +291,7 @@ index 4bd55aa75..8f5f8c050 100644
          }
  
          Plugin[] pluginClone = pluginManager.getPlugins().clone(); // Paper
-@@ -861,6 +863,7 @@ public final class CraftServer implements Server {
+@@ -900,6 +902,7 @@ public final class CraftServer implements Server {
          reloadData();
          org.spigotmc.SpigotConfig.registerCommands(); // Spigot
          com.destroystokyo.paper.PaperConfig.registerCommands(); // Paper
@@ -299,7 +299,7 @@ index 4bd55aa75..8f5f8c050 100644
          overrideAllCommandBlockCommands = commandsConfiguration.getStringList("command-block-overrides").contains("*");
          ignoreVanillaPermissions = commandsConfiguration.getBoolean("ignore-vanilla-permissions");
  
-@@ -2134,6 +2137,14 @@ public final class CraftServer implements Server {
+@@ -2238,6 +2241,14 @@ public final class CraftServer implements Server {
              return com.destroystokyo.paper.PaperConfig.config;
          }
  
@@ -315,7 +315,7 @@ index 4bd55aa75..8f5f8c050 100644
          public void restart() {
              org.spigotmc.RestartCommand.restart();
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 2ea6f5b7d..b3691f6dc 100644
+index 9dd994f8b111cec2dfa30a962db8654a68c344b1..0704e55e348996242870e7d8cb5ccba1530c04e7 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -139,6 +139,14 @@ public class Main {
@@ -333,6 +333,3 @@ index 2ea6f5b7d..b3691f6dc 100644
                  // Paper start
                  acceptsAll(asList("server-name"), "Name of the server")
                          .withRequiredArg()
--- 
-2.27.0.windows.1
-
