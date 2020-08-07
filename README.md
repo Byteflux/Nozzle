@@ -2,7 +2,7 @@
 
 An experimental fork of [Paper](https://github.com/PaperMC/Paper) used for testing performance fixes and feature ideas. Nozzle is a personal project and does **not** come with any promise of support. Contributions are reviewed and considered.
 
-If you're a casual user looking for a well-supported, modern server software, please consider using Paper. It's actively maintained by a fantastic team with support offered over [Discord](https://paperdiscord.emc.gs).
+If you're a casual user looking for a well-supported, modern server software, please consider using Paper. It's actively maintained by a fantastic team with support offered over [Discord](https://discord.gg/papermc).
 
 ## Compiling
 
