@@ -68,6 +68,15 @@ case "$1" in
         ls -la Nozzle-Server/target/nozzle*.jar
     ) || failed=1
     ;;
+    "i" | "install")
+    (
+        set -e
+        cd "$basedir"
+        scripts/build.sh "$basedir" || exit 1
+        mvn clean install || exit 1
+        echo "Nozzle jar successfully built and installed to local repo"
+    ) || failed=1
+    ;;
     "make")
     (
         if [[ "$2" = "bacon" ]] ; then
