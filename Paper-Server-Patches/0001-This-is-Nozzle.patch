@@ -5,7 +5,7 @@ Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index d018f900db595ab1cbf1d6d68496235e5c146217..4b2816d1bad987f797884421d498da936287d853 100644
+index 80f165291385f5f54def1a8e8487b209fb06a4a3..34d00b722117a31502d959ffdfe23ebf369a2769 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,11 +1,18 @@
@@ -23,7 +23,7 @@ index d018f900db595ab1cbf1d6d68496235e5c146217..4b2816d1bad987f797884421d498da93
 +    </parent>
 +
 +    <artifactId>nozzle</artifactId>
-     <version>1.16.2-R0.1-SNAPSHOT</version>
+     <version>1.16.4-R0.1-SNAPSHOT</version>
 -    <name>Paper</name>
 -    <url>https://papermc.io</url>
 +
@@ -51,7 +51,7 @@ index d018f900db595ab1cbf1d6d68496235e5c146217..4b2816d1bad987f797884421d498da93
              <version>${project.version}</version>
              <scope>compile</scope>
          </dependency>
-@@ -164,7 +164,6 @@
+@@ -165,7 +165,6 @@
  
      <!-- This builds a completely 'ready to start' jar with all dependencies inside -->
      <build>
@@ -59,7 +59,7 @@ index d018f900db595ab1cbf1d6d68496235e5c146217..4b2816d1bad987f797884421d498da93
          <defaultGoal>clean install</defaultGoal> <!-- Paper -->
          <plugins>
              <plugin>
-@@ -172,7 +171,7 @@
+@@ -173,7 +172,7 @@
                  <artifactId>gitdescribe-maven-plugin</artifactId>
                  <version>1.3</version>
                  <configuration>
@@ -82,10 +82,10 @@ index 74ed02fa9296583977bb721014b10ff8b708b43c..a00232419823d1511da050046053e4c3
                  .completer(new ConsoleCommandCompleter(this.server))
          );
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index 65e8dc34029598ec84af66348f437f9d4b084bb4..9ac6d57b9cf07acebe7cb75bb783b8ec26f4d5a4 100644
+index d0ffe5790e98b65cd6035ad529e7da8172de9029..5bad3b5b67be9df6b8d0c693c833056e4a0a32aa 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
-@@ -1451,7 +1451,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
+@@ -1452,7 +1452,7 @@ public abstract class MinecraftServer extends IAsyncTaskHandlerReentrant<TickTas
      }
  
      public String getServerModName() {
@@ -95,10 +95,10 @@ index 65e8dc34029598ec84af66348f437f9d4b084bb4..9ac6d57b9cf07acebe7cb75bb783b8ec
  
      public CrashReport b(CrashReport crashreport) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index 5f5b39b3b7e56e935d1f964fbfc3385a65b7e178..57e868fc1ccd7106dd63a6fdbf7480d436ab8eb1 100644
+index 4e1b4d7cde8e0ea2d5e765dfc879db55e7bd669d..0eb036c48acfa69f6885d16654926452f2953489 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -230,7 +230,7 @@ import javax.annotation.Nullable; // Paper
+@@ -232,7 +232,7 @@ import javax.annotation.Nullable; // Paper
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {

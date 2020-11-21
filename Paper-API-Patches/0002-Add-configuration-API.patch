@@ -5,10 +5,10 @@ Subject: [PATCH] Add configuration API
 
 
 diff --git a/src/main/java/org/bukkit/Server.java b/src/main/java/org/bukkit/Server.java
-index 7c0a788900c93c29d14d8c45ac5ae3317cf4a94e..2d4e5ad79d7300f89c65457a9db7306d15bc7b94 100644
+index 3e6331807f2c411cef3c2774a503f162685e8b46..1fed54876fbc543546a7412d46f0cffe1bcecd72 100644
 --- a/src/main/java/org/bukkit/Server.java
 +++ b/src/main/java/org/bukkit/Server.java
-@@ -1456,6 +1456,14 @@ public interface Server extends PluginMessageRecipient {
+@@ -1475,6 +1475,14 @@ public interface Server extends PluginMessageRecipient {
          }
          // Paper end
  

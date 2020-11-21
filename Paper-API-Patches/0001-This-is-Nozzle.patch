@@ -5,7 +5,7 @@ Subject: [PATCH] This is Nozzle
 
 
 diff --git a/pom.xml b/pom.xml
-index 1a34f6880b45e3c46a8e29575b549f3a601721e7..41fbe1f36ff5ae0bcc86760f87afd8bd51a9836d 100644
+index 1c33b1f4d2366116dd45478b8ad9cdb51fd6bb57..fb8375e4f97801ad28c39b5fd2cf85641ec3a4a2 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -1,20 +1,18 @@
@@ -26,7 +26,7 @@ index 1a34f6880b45e3c46a8e29575b549f3a601721e7..41fbe1f36ff5ae0bcc86760f87afd8bd
 -    <groupId>com.destroystokyo.paper</groupId>
 -    <artifactId>paper-api</artifactId>
 +    <artifactId>nozzle-api</artifactId>
-     <version>1.16.2-R0.1-SNAPSHOT</version>
+     <version>1.16.4-R0.1-SNAPSHOT</version>
 -    <packaging>jar</packaging>
  
 -    <name>Paper-API</name>
